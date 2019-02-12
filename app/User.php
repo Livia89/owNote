@@ -27,4 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /* To soft delete - delete in logical */ 
+    public function notes(){
+        return $this->hasMany('App\Note');
+    }
 }
