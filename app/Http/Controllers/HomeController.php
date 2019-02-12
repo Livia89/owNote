@@ -21,8 +21,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
+    public function index(Request $req)
+    {       
+        // $req->session()->flash("status",'Você está logado');
         return view('home');
     }
+
 }
