@@ -18,6 +18,8 @@ class CreateNotesTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->datetime('dateNotification');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes(); 
         });
