@@ -22,6 +22,6 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/notes', 'Back\NotesController@index')->name('home');
 Route::get('/notes/add', 'Back\NotesController@add')->name('notes.add');
 Route::post('/notes/add', 'Back\NotesController@save')->name('notes.save');
-
+ 
 
 
