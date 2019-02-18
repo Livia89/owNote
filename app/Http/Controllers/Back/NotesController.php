@@ -14,15 +14,10 @@ class NotesController extends Controller
 {
     public function index(){
         
+       
+        $notas = Auth::user()->notes()->get(); // get all notes of a user 
         
-        $notes = Auth::user()->notes()->get();
-        
-        dd($notes);
-
-        
-        return view('notes.home');
-
-
+        return view('notes.home', compact("notas"));
 
     }
 
@@ -34,10 +29,12 @@ class NotesController extends Controller
         
         $note = $req->all();
         if(isset($note['title'])){
-            
+            $note["user_id"] = Auth::user()->id;             
 
+             
             /* Mostrar este status quando voltar para a home "Listagem dos tickets", mas estou tentando listar os tickets do user primeiro :D*/ 
             $confirm = Note::Create($note);
+
             if($confirm){
                 $req->session()->flash("statusNote",'Your note was successfully created');
                 return redirect()->route("home");
