@@ -42,5 +42,20 @@ class NotesController extends Controller
         }
 
     }
+
+
+    public function edit(Request $req , $id=''){
+
+        if(empty($id)){
+            
+            $req->session()->flash("error", "Something went wrong :S");
+            return redirect()->route("home");
+        }
+
+        $note = Note::find($id);
+
+        return view("notes.edit", compact('note'));
+
+    }
     
 }

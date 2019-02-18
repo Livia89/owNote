@@ -15,8 +15,16 @@
                         </div>
                     @endif
 
-                    <a href='{{route("notes.add")}}' class='right btn btn-primary'> <span class='fas fa-plus'></span> Add Note</a> <br>
+                @id(session('error'))    
+                    <div class="alert alert-danger">
+                        {{session('error')}}
+                    </div>   
+                @endif
+                <div class="float-right">
+                    <a href='{{route("notes.add")}}' class='right btn btn-primary'><span class='fas fa-plus'></span> Add Note</a> 
+                    <a href='{{route("notes.deleteAll")}}' class='right btn btn-danger'><span class='fas fa-plus'></span> Delete All Notes</a> <br>
                     <br>
+                </div>
                     <table class='table'>
                         <thead class='thead-dark'>
                             <tr >
@@ -32,7 +40,8 @@
                             <td>{{$nota->content}}</td>
                             <td>{{\Carbon\Carbon::parse($nota->dateNotification)->format('d/m/Y')}}</td>
                             <td>
-                                <a href='#'><span class="glyphicon glyphicon-envelope"></span></a>
+                                <a href='{{route("notes.edit", $nota->id)}}'><span class='fas fa-edit'></span> &nbsp; </a> 
+                                <a href='{{route("notes.delete", $nota->id)}}'><span class='fas fa-trash'></span></a>
                             </td>
                         </tr>
                         @endforeach
