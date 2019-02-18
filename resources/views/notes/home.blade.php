@@ -20,16 +20,20 @@
                     <table class='table'>
                         <thead class='thead-dark'>
                             <tr >
-                                <th scope="col">Title</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Notification Date</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Notification Date</th>
+                                <th>Operations</th>
                             </tr>
                         </thead>
                         @foreach($notas as $nota)
                         <tr>
-                            <td scope="col">{{$nota->title}}</td>
-                            <td scope="col">{{$nota->content}}</td>
-                            <td scope="col">{{\Carbon\Carbon::parse($nota->dateNotification)->format('d/m/Y')}}</td>
+                            <td>{{$nota->title}}</td>
+                            <td>{{$nota->content}}</td>
+                            <td>{{\Carbon\Carbon::parse($nota->dateNotification)->format('d/m/Y')}}</td>
+                            <td>
+                                <a href='#'><span class="glyphicon glyphicon-envelope"></span></a>
+                            </td>
                         </tr>
                         @endforeach
                     </table>
