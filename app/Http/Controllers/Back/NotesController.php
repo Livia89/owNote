@@ -57,18 +57,31 @@ class NotesController extends Controller
             return redirect()->route('home');
         }
 
-        
-        if(empty($id)){
-            
+        if(empty($id)){    
             $req->session()->flash("error", "Something went wrong :S");
             return redirect()->route("home");
         }
         
         $note = Note::find($id);
         
-
         return view("notes.edit", compact('note'));
 
     }
+
+    public function deleteNote($id='', Request $req){
+        
+        if(empty($id)) return redirect()->route("home");
+        if(strpos($req->url(), "All") != 'false'){
+            Note::getQuery()->delete();
+            return redirect()->route("home");
+        }
+
+        Note::find($id)->delete();
+        $req->session()->flash("Success", "Deleted :D");
+
+        return redirect()->route("home");
+
+    }
+
     
 }
