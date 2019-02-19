@@ -46,13 +46,26 @@ class NotesController extends Controller
 
     public function edit(Request $req , $id=''){
 
+        // To update
+        if(isset($req->title)){
+            $newNote = [
+                "title" => $req->title,
+                "content" => $req->content,
+                "dateNotification" => $req->dateNotification
+            ];
+            Note::find($id)->update($newNote);
+            return redirect()->route('home');
+        }
+
+        
         if(empty($id)){
             
             $req->session()->flash("error", "Something went wrong :S");
             return redirect()->route("home");
         }
-
+        
         $note = Note::find($id);
+        
 
         return view("notes.edit", compact('note'));
 

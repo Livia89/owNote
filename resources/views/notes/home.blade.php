@@ -13,9 +13,9 @@
                         <div class="alert alert-success" role="alert">
                             {{ session('statusNote') }}
                         </div>
-                    @endif
+                @endif
 
-                @id(session('error'))    
+                @if(session('error'))    
                     <div class="alert alert-danger">
                         {{session('error')}}
                     </div>   
