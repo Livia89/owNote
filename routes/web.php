@@ -24,6 +24,10 @@ Route::get('/notes/edit/{id?}', 'Back\NotesController@edit')->name('notes.edit')
 Route::put('/notes/edit/{id?}', 'Back\NotesController@edit')->name('notes.update');
 Route::get('/notes/delete/{id?}', 'Back\NotesController@deleteNote')->name('notes.delete');
 Route::delete('/notes/delete/All', 'Back\NotesController@deleteNote')->name('notes.deleteAll');
+Route::get('/cron/notification', 'Notification\OneSignalController@send')->name('notification.send');
+
+
+
  
 
 

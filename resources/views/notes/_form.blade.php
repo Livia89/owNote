@@ -8,7 +8,7 @@
   </div>
   <div class="form-group">
     <label for="notificationDate">Notification Date</label>
-    <input type="date" name='dateNotification' required="required" class="form-control" id="notificationDate" value='{{isset($note) ? $note->dateNotification : ""}}'>
+    <input type="date" min="<?=date('Y-m-d')?>" name='dateNotification' required="required" class="form-control" id="notificationDate" value='{{isset($note) ? $note->dateNotification : ""}}'>
   </div>
   <div class="form-group">
     <label for="notificationDate">Notification Hour</label>

@@ -31,7 +31,6 @@ class NotesController extends Controller
         if(isset($note['title'])){
             $note["user_id"] = Auth::user()->id;             
 
-             
             /* Mostrar este status quando voltar para a home "Listagem dos tickets", mas estou tentando listar os tickets do user primeiro :D*/ 
             $confirm = Note::Create($note);
 
@@ -40,9 +39,7 @@ class NotesController extends Controller
                 return redirect()->route("home");
             }
         }
-
     }
-
 
     public function edit(Request $req , $id=''){
 
