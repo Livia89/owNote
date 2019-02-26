@@ -48,12 +48,8 @@ class NotesController extends Controller
 
         // To update
         if(isset($req->title)){
-            $newNote = [
-                "title" => $req->title,
-                "content" => $req->content,
-                "dateNotification" => $req->dateNotification
-            ];
-            Note::find($id)->update($newNote);
+            $note = $req->all();
+            Note::find($id)->update($note);
             return redirect()->route('home');
         }
 
@@ -71,14 +67,14 @@ class NotesController extends Controller
     public function deleteNote($id='', Request $req){
         
         if(empty($id)) return redirect()->route("home");
-        if(strpos($req->url(), "All") != 'false'){
+
+        if(strpos($req->url(), "All") !== false){
             Note::getQuery()->delete();
             return redirect()->route("home");
         }
 
         Note::find($id)->delete();
         $req->session()->flash("Success", "Deleted :D");
-
         return redirect()->route("home");
 
     }

@@ -10,4 +10,8 @@
     <label for="notificationDate">Notification Date</label>
     <input type="date" name='dateNotification' required="required" class="form-control" id="notificationDate" value='{{isset($note) ? $note->dateNotification : ""}}'>
   </div>
+  <div class="form-group">
+    <label for="notificationDate">Notification Hour</label>
+    <input type="time" name='hourNotification' required="required" class="form-control" id="notificationHour" value='{{isset($note) ? $note->hourNotification : ""}}'>
+  </div>
   <button type="submit" class="btn btn-primary">Send</button>

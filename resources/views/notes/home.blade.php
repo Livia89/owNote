@@ -31,6 +31,7 @@
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th>Notification Date</th>
+                                <th>Hours</th>
                                 <th>Operations</th>
                             </tr>
                         </thead>
@@ -39,6 +40,7 @@
                             <td>{{$nota->title}}</td>
                             <td>{{$nota->content}}</td>
                             <td>{{\Carbon\Carbon::parse($nota->dateNotification)->format('d/m/Y')}}</td>
+                            <td>{{$nota->hourNotification}}</td>
                             <td>
                                 <a href='{{route("notes.edit", $nota->id)}}'><span class='fas fa-edit'></span> &nbsp; </a> 
                                 <a href='{{route("notes.delete", $nota->id)}}'><span class='fas fa-trash'></span></a>

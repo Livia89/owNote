@@ -11,7 +11,7 @@ class Note extends Model
     use SoftDeletes; /* To delete logical */ 
 
     protected $fillable = [
-        'title', 'content', 'dateNotification', 'user_id'
+        'title', 'content', 'dateNotification', 'hourNotification', 'user_id'
     ];
 
     protected $dates = ['deleted_at'];
