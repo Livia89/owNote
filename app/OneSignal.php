@@ -14,8 +14,8 @@ class OneSignal extends Model
     public function getRestApiKey(){return $this->REST_API_KEY;}
 
     static function createNotification($note){
-            
         
+
     }
 
 
