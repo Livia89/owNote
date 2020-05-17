@@ -64,7 +64,11 @@
                                 @endif
 
                             </div>
-
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-8 offset-md-4">
+                                <div> Dont have account yet? <a href="{{route('register')}}">Register now</a></div>
+                            </div>
                         </div>
                     </form>
                 </div>

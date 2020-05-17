@@ -12,14 +12,18 @@
 */
 
 Route::get('/', function () {
+
     return view('home');
 });
+
+setlocale(LC_ALL, "en-EN");
 
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function(){
 
-    Route::get('/notes', 'Back\NotesController@index')->name('home');
+    Route::get('/', function (){return view('notes.home');});
+    Route::get('/notes', 'Back\NotesController@index')->name('notes.home');
     Route::get('/notes/add', 'Back\NotesController@add')->name('notes.add');
     Route::post('/notes/add', 'Back\NotesController@save')->name('notes.save');
     Route::get('/notes/edit/{id?}', 'Back\NotesController@edit')->name('notes.edit');

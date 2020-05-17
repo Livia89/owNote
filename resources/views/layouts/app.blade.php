@@ -35,7 +35,7 @@
 <body>
     <div id="app" class="@if(Auth::guest()) {{'noLogged'}} @endif" >
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="w-100">
+            <div class="@if(Auth::guest()) {{'w-100'}} @endif">
                 <div class="containerLogo">
                     <a class="navbar-brand" href="{{ url('/') }}">
                         <figure>
