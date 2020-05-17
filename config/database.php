@@ -67,7 +67,7 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
             'schema' => 'public',
-            'sslmode' => 'prefer', 
+            'sslmode' => 'prefer',
         ],
 
         'sqlsrv' => [

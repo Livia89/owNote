@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'OwNote') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -18,30 +17,35 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+    <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
+
     <!-- ONE Signal -->
     <link rel="manifest" href="{{ asset('js/onesignal/manifest.json') }}" />
 
     <script>
             window.Laravel = <?php echo json_encode([
-                'csrfToken' => csrf_token(),
+                'csrfToken' => csrf_token()
             ]); ?>
             </script>
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="@if(!Auth::guest()) {{'logado'}} @endif" >
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+            <div class="w-100">
+                <div class="containerLogo">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <figure>
+                            <img class='logo' src="{{asset("source/logo/logo_menorzinho.png")}}">
+                        </figure>
+                    </a>
+                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+            </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
@@ -52,14 +56,14 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>--}}
+{{--                            </li>--}}
+{{--                            @if (Route::has('register'))--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
+{{--                                </li>--}}
+{{--                            @endif--}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -81,30 +85,33 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
-        </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        </nav>
+            <main class="py-4">
+                @yield('content')
+            </main>
         <footer>
-        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-        <script>
-           var OneSignal = window.OneSignal || [];
-           
-            OneSignal.push(function() {
-                OneSignal.init({
-                    
+            <div class="extrafooter">
+              {{config('app.name')}}
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+
+        OneSignal.push(function() {
+            OneSignal.init({
+
                 appId: "597c7226-83eb-4d80-9fb1-18856e8aaa6f",
                 autoRegister: false,
                 notifyButton: {
                     enable: true,
                 },
                 allowLocalhostAsSecureOrigin: true
-                });
             });
-        </script>
-        </footer>
-    </div>
+        });
+    </script>
 </body>
 </html>
