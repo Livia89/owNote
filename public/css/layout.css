@@ -1,0 +1,15 @@
+.containerLogo{
+    width: 100%;
+    text-align: center;
+}
+
+.noLogged .container{
+    height: calc(100vmin - 380px);
+}
+
+.extrafooter{
+    background-color: #1b1e21;
+    color: #fff;
+    padding: 10px 0;
+
+}

@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <h1 class="text-center">Wellcome to OwNote</h1>
+        <h1 class="text-center pinkColor marginTopBottom20">Wellcome to OwNote</h1>
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="card">
-                    <div class="card-header"></div>
-                    <div class="card-body">
+                    <div class="card-header">Make login or register to use application</div>
+                    <div class="card-body text-center">
                         @if (Route::has('register'))
                             <a class="btn btn-success" href="{{ route('login') }}">{{ __('Login') }}</a>
                         @endif

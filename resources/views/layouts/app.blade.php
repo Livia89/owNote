@@ -21,6 +21,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/shared_classes.css') }}" rel="stylesheet">
 
     <!-- ONE Signal -->
     <link rel="manifest" href="{{ asset('js/onesignal/manifest.json') }}" />
@@ -32,7 +33,7 @@
             </script>
 </head>
 <body>
-    <div id="app" class="@if(!Auth::guest()) {{'logado'}} @endif" >
+    <div id="app" class="@if(Auth::guest()) {{'noLogged'}} @endif" >
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="w-100">
                 <div class="containerLogo">
@@ -91,8 +92,8 @@
                 @yield('content')
             </main>
         <footer>
-            <div class="extrafooter">
-              {{config('app.name')}}
+            <div class="extrafooter text-center">
+              {{config('app.name')}}© - All rights reserved - <?=date('Y')?>
             </div>
         </footer>
     </div>
